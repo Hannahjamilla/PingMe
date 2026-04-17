@@ -107,12 +107,12 @@ const HeroSection = ({ onStart }) => {
               </h1>
 
               <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-md mb-10">
-                New to tech? I'll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
+                New to tech? I&apos;ll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
               </p>
 
               <div className="flex items-center gap-6">
                 <ButtonPrimary onClick={onStart}>
-                  Let's get started
+                  Let&apos;s get started
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </ButtonPrimary>
                 <motion.button 
@@ -347,9 +347,9 @@ const HeroSection = ({ onStart }) => {
 
             <div className="space-y-6 text-left">
               {[
-                "Hey there — thanks for stopping by. I'm the person behind PingMe. This is a small startup, still in its early stages, and I'm learning as I go.",
-                "I started this mostly to support my studies. Every pixel, every line of code — I'm putting in the work myself because I genuinely care about the craft.",
-                "I'm currently using free hosting and haven't gotten a custom domain yet. But I'm working toward it, one step at a time."
+                "Hey there — thanks for stopping by. I&apos;m the person behind PingMe. This is a small startup, still in its early stages, and I&apos;m learning as I go.",
+                "I started this mostly to support my studies. Every pixel, every line of code — I&apos;m putting in the work myself because I genuinely care about the craft.",
+                "I&apos;m currently using free hosting and haven&apos;t gotten a custom domain yet. But I&apos;m working toward it, one step at a time."
               ].map((text, i) => (
                 <motion.div 
                   key={i}

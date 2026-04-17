@@ -35,10 +35,10 @@ const HomePage = ({ onShowToast }) => {
               Start your project
             </motion.p>
             <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-6">
-              Let's work<br />together.
+              Let&apos;s work<br />together.
             </motion.h1>
             <motion.p variants={fadeUp} className="text-neutral-400 text-base md:text-lg max-w-md leading-relaxed">
-              Got an idea? A question? Or just want to say hi? Fill in the form below and I'll get back to you soon.
+              Got an idea? A question? Or just want to say hi? Fill in the form below and I&apos;ll get back to you soon.
             </motion.p>
           </motion.div>
         </div>

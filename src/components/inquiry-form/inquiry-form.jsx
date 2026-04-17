@@ -86,7 +86,7 @@ const InquiryForm = ({ onShowToast }) => {
           >
             <div className="mb-10">
               <h2 className="font-display text-2xl font-bold text-black tracking-tight">Send a message</h2>
-              <p className="text-sm text-neutral-400 mt-2">Tell me about your idea — I'd love to hear it.</p>
+              <p className="text-sm text-neutral-400 mt-2">Tell me about your idea — I&apos;d love to hear it.</p>
             </div>
 
             <div className="space-y-5">
@@ -112,7 +112,7 @@ const InquiryForm = ({ onShowToast }) => {
               <InputField
                 label="Your message"
                 name="message"
-                placeholder="What's on your mind? Share as much or as little as you'd like..."
+                placeholder="What&apos;s on your mind? Share as much or as little as you&apos;d like..."
                 isTextArea
                 value={formData.message}
                 onChange={handleChange}
@@ -141,7 +141,7 @@ const InquiryForm = ({ onShowToast }) => {
             </div>
             <h2 className="font-display text-2xl font-bold mb-3 tracking-tight">Got it!</h2>
             <p className="text-neutral-500 mb-10 text-sm max-w-xs mx-auto leading-relaxed">
-              Your message is on its way. I'll get back to you as soon as I can.
+              Your message is on its way. I&apos;ll get back to you as soon as I can.
             </p>
             <button
               onClick={() => setSubmitted(false)}
