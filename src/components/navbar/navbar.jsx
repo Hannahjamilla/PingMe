@@ -12,7 +12,7 @@ const Navbar = ({ onNavigate }) => {
           whileTap={{ scale: 0.98 }}
         >
           <img 
-            src="/src/assets/pingme-logo.png" 
+            src="/pingme-logo.png" 
             alt="PingMe Logo" 
             className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110"
           />

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <img 
-            src="/src/assets/pingme-logo.png" 
+            src="/pingme-logo.png" 
             alt="PingMe Logo" 
             className="w-6 h-6 object-contain"
           />
