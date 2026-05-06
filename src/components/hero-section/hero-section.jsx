@@ -107,7 +107,7 @@ const HeroSection = ({ onStart }) => {
               </h1>
 
               <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-md mb-10">
-                New to tech? I&apos;ll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
+                Hi, New to tech? I&apos;ll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
               </p>
 
               <div className="flex items-center gap-6">
@@ -347,9 +347,8 @@ const HeroSection = ({ onStart }) => {
 
             <div className="space-y-6 text-left">
               {[
-                "Hi. I'm the one running PingMe. It's not a big operation — just me, building this and trying to make something useful.",
-                "I design, code, and refine everything myself because I actually enjoy the process. Every detail matters to me.",
-                "Right now, I'm on free hosting and don't have a custom domain. It's not perfect, but I'm getting there — slowly and steadily."
+                "Hey there - thanks for stopping by. I'm the person behind PingMe. This is a small startup, still in its early stages, and I'm learning as I go.",
+                "I'm currently using free hosting and haven't gotten a custom domain yet. But I'm working toward it, one step at a time."
               ].map((text, i) => (
                 <motion.div 
                   key={i}
