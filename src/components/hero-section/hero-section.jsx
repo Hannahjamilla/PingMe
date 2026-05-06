@@ -347,9 +347,8 @@ const HeroSection = ({ onStart }) => {
 
             <div className="space-y-6 text-left">
               {[
-                "Hey there — thanks for stopping by. I&apos;m the person behind PingMe. This is a small startup, still in its early stages, and I&apos;m learning as I go.",
-                "I started this mostly to support my studies. Every pixel, every line of code — I&apos;m putting in the work myself because I genuinely care about the craft.",
-                "I&apos;m currently using free hosting and haven&apos;t gotten a custom domain yet. But I&apos;m working toward it, one step at a time."
+                "Hey there - thanks for stopping by. I'm the person behind PingMe. This is a small startup, still in its early stages, and I'm learning as I go.",
+                "I'm currently using free hosting and haven't gotten a custom domain yet. But I'm working toward it, one step at a time."
               ].map((text, i) => (
                 <motion.div 
                   key={i}
