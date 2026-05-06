@@ -338,18 +338,18 @@ const HeroSection = ({ onStart }) => {
             className="text-center"
           >
             <motion.p variants={fadeUp} className="text-[11px] font-semibold text-neutral-500 tracking-widest uppercase mb-4">
-              A note from the maker
+              Behind the scenes
             </motion.p>
             <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-16 md:mb-20">
-              A small project,{' '}
-              <span className="text-neutral-500">built with heart.</span>
+              Just me,{' '}
+              <span className="text-neutral-500">figuring it out.</span>
             </motion.h2>
 
             <div className="space-y-6 text-left">
               {[
-                "Hey there — thanks for stopping by. I&apos;m the person behind PingMe. This is a small startup, still in its early stages, and I&apos;m learning as I go.",
-                "I started this mostly to support my studies. Every pixel, every line of code — I&apos;m putting in the work myself because I genuinely care about the craft.",
-                "I&apos;m currently using free hosting and haven&apos;t gotten a custom domain yet. But I&apos;m working toward it, one step at a time."
+                "Hi. I'm the one running PingMe. It's not a big operation — just me, building this and trying to make something useful.",
+                "I design, code, and refine everything myself because I actually enjoy the process. Every detail matters to me.",
+                "Right now, I'm on free hosting and don't have a custom domain. It's not perfect, but I'm getting there — slowly and steadily."
               ].map((text, i) => (
                 <motion.div 
                   key={i}
@@ -366,10 +366,10 @@ const HeroSection = ({ onStart }) => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <Heart className="w-4 h-4 text-neutral-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Thank you</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Grateful</span>
                 </div>
                 <p className="text-sm md:text-base text-neutral-600 leading-relaxed">
-                  Thank you for your patience and kindness as I build and grow this space. Your support means the world to me — really.
+                  I appreciate you being here while I&apos;m still figuring things out. Your interest and encouragement keep me going — honestly.
                 </p>
               </motion.div>
             </div>
