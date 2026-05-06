@@ -107,7 +107,7 @@ const HeroSection = ({ onStart }) => {
               </h1>
 
               <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-md mb-10">
-                New to tech? I&apos;ll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
+                Hi, New to tech? I&apos;ll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
               </p>
 
               <div className="flex items-center gap-6">
