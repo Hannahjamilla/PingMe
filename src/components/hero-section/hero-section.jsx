@@ -1,480 +1,347 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import {
+  Code, Layout, Palette, Zap, Trophy, ChevronsRight, Monitor,
+  Globe, Star, Clock, Smile, CheckCircle, ArrowRight, Mail, MessageSquare
+} from 'lucide-react';
 import ButtonPrimary from '../button-primary/button-primary';
 import AccordionItem from '../accordion/accordion';
-import { 
-  ArrowDown, Code, Layout, Presentation, Palette, Mail, 
-  Smartphone, Heart, Zap, Target, BookOpen, Check, 
-  ArrowRight, MoveRight, ShieldCheck
-} from 'lucide-react';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
-  }
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
 };
 
 const stagger = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.2 }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
 
-const HeroSection = ({ onStart }) => {
+const HeroSection = ({ onStart, onViewProjects }) => {
+  const skillset = [
+    { icon: Code,    title: "Web Development", desc: "Clean, modern websites built from scratch.", bg: "bg-[#ed6a5a]" },
+    { icon: Layout,  title: "React & Vite",    desc: "Fast, dynamic UIs using the latest tools.",   bg: "bg-[#9bc1bc]" },
+    { icon: Palette, title: "UI/UX Design",    desc: "Simple, beautiful, and easy to navigate.",    bg: "bg-white" },
+    { icon: Zap,     title: "Fast Delivery",   desc: "Efficient workflow. No unnecessary delays.",   bg: "bg-[#f4f1bb]" },
+  ];
+
   const services = [
-    { 
-      icon: Code, title: "Portfolio builds", 
-      desc: "A personal site that shows who you are and what you can do. Great for students, job seekers, or anyone starting out.", 
-      tag: "Most popular"
-    },
-    { 
-      icon: Layout, title: "Simple websites", 
-      desc: "Clean landing pages for your small business or side project. No clutter, just something that works well and looks great." 
-    },
-    { 
-      icon: Presentation, title: "Slide decks", 
-      desc: "Turn your raw notes into polished presentations. Custom layouts, clear visuals, consistent style throughout." 
-    },
-    { 
-      icon: Palette, title: "Social graphics", 
-      desc: "Posters, carousels, and cover photos for your socials. Made to match your vibe and catch attention." 
-    },
-    { 
-      icon: Mail, title: "Digital invites", 
-      desc: "Beautiful online invitations for birthdays, events, or gatherings. Interactive, stylish, and eco-friendly." 
-    },
-    { 
-      icon: Smartphone, title: "Basic UI design", 
-      desc: "Simple wireframes and mockups to help you see your app idea before building it. Think of it as a blueprint." 
-    }
+    { icon: Globe,  title: "Business Website",     desc: "A professional online home for your brand, store, or service." },
+    { icon: Layout, title: "Portfolio Site",        desc: "Show your work beautifully and get noticed by clients." },
+    { icon: Palette,title: "Landing Page",          desc: "One focused page designed to convert visitors into customers." },
+    { icon: Monitor,title: "Website Redesign",      desc: "Give your old website a fresh, modern look and feel." },
+    { icon: Code,   title: "UI Mockup / Prototype", desc: "See your idea come to life before we start building it." },
+    { icon: Zap,    title: "Quick Fixes",           desc: "Bug fixes, content updates, or small improvements. Just ask!" },
   ];
 
-  const highlights = [
-    { icon: Heart, t: "Beginner friendly", d: "No confusing tech talk. Just clear, honest, and supportive conversations." },
-    { icon: Zap, t: "Quick turnaround", d: "Most projects are done within a week. Your time matters to me." },
-    { icon: Target, t: "Made just for you", d: "Every project is shaped around your ideas, your goals, your personality." },
-    { icon: BookOpen, t: "You'll learn too", d: "I share tips so you can manage your own stuff after we're done." }
-  ];
-
-  const processSteps = [
-    { n: "01", title: "Chat", desc: "We talk about what you need. No pressure, just a friendly conversation." },
-    { n: "02", title: "Plan", desc: "I map things out and show you a rough direction before anything starts." },
-    { n: "03", title: "Build", desc: "The actual making part. I'll keep you updated every step of the way." },
-    { n: "04", title: "Launch", desc: "We review everything together, polish the details, and go live." }
+  const stats = [
+    { value: "24h",  label: "Average reply time" },
+    { value: "100%", label: "Client satisfaction" },
+    { value: "2×",   label: "Revision rounds included" },
+    { value: "∞",    label: "Ideas we can build" },
   ];
 
   return (
-    <section className="relative bg-[#f5f5f5]">
+    <section className="relative overflow-hidden w-full bg-[#f4f1bb]">
 
-      {/* ─── Hero ─── */}
-      <div className="min-h-screen flex flex-col justify-between pt-16 relative overflow-hidden">
-        {/* Decorative grid lines */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-[20%] w-px h-full bg-neutral-200/60" />
-          <div className="absolute top-0 left-[40%] w-px h-full bg-neutral-200/40" />
-          <div className="absolute top-0 left-[60%] w-px h-full bg-neutral-200/40" />
-          <div className="absolute top-0 left-[80%] w-px h-full bg-neutral-200/60" />
-        </div>
-
-        {/* Main hero content */}
-        <div className="flex-grow flex items-center px-6 lg:px-12">
-          <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* ─── HERO SPLASH ─── */}
+      <div className="min-h-screen flex flex-col justify-center pt-14 pb-16 px-6 lg:px-12 relative z-10 border-b-4 border-[#1a1a1a]">
+        
+        <div className="max-w-[1100px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="relative z-10">
+            <div className="inline-flex items-center gap-2 bg-[#ed6a5a] text-white px-3 py-1 border-2 border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a] font-bold font-mono text-xs uppercase -rotate-1 mb-8">
+              <span className="w-2 h-2 bg-white border border-[#1a1a1a] animate-pulse" />
+              Open For Projects
+            </div>
             
-            {/* Left — copy */}
-            <motion.div 
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10"
-            >
-              <div className="flex items-center gap-3 mb-10">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black" />
-                </span>
-                <span className="text-[11px] font-semibold text-neutral-400 tracking-widest uppercase">
-                  Open for projects
-                </span>
+            <h1 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-black uppercase text-[#1a1a1a] leading-none mb-6"
+                style={{ textShadow: '2px 2px 0px #ed6a5a, 4px 4px 0px #9bc1bc' }}>
+              Hello, Friend.
+            </h1>
+            
+            <p className="font-mono font-bold text-[#1a1a1a] text-sm md:text-base max-w-lg mb-8 bg-white p-4 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a]">
+              Hi! I'm Hannah Jamilla DR. Peralta — a student web developer and designer. I'm here to help you build your digital identity and bring your creative ideas to life on the web, step by step.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <ButtonPrimary onClick={onStart}>
+                Get Started
+              </ButtonPrimary>
+              <button 
+                onClick={onViewProjects}
+                className="group flex justify-center items-center gap-2 bg-white border-2 border-[#1a1a1a] text-[#1a1a1a] font-black uppercase tracking-widest px-6 py-3 shadow-[4px_4px_0px_#1a1a1a] hover:bg-[#9bc1bc] transition-all hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[2px_2px_0px_#1a1a1a] active:shadow-none text-xs"
+              >
+                See My Work <ChevronsRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Retro game boy card */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="hidden lg:flex justify-center relative">
+            <div className="w-[60%] aspect-[5/7] max-h-[500px] bg-[#9bc1bc] border-4 border-[#1a1a1a] rounded-t-2xl rounded-b-lg shadow-[8px_8px_0px_#1a1a1a] p-5 flex flex-col items-center">
+              <div className="w-full flex-grow bg-[#f4f1bb] border-2 border-[#1a1a1a] rounded mb-6 shadow-inner overflow-hidden flex flex-col items-center justify-center gap-2">
+                <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                  <Monitor className="w-12 h-12 text-[#ed6a5a]" />
+                </motion.div>
+                <p className="font-mono text-[9px] text-[#1a1a1a] font-bold text-center px-4 leading-relaxed">
+                  Frontend Developer<br/>Ready to work!
+                </p>
+                <div className="flex gap-1 mt-2">
+                  {[...Array(3)].map((_,i) => (
+                    <motion.div key={i} animate={{ opacity: [1,0,1] }} transition={{ repeat:Infinity, duration:1, delay: i*0.3 }}
+                      className="w-1.5 h-1.5 bg-[#ed6a5a] border border-[#1a1a1a]" />
+                  ))}
+                </div>
               </div>
-
-              <h1 className="font-display text-[clamp(3.5rem,9vw,8rem)] font-bold tracking-[-0.04em] leading-[0.85] text-black mb-10">
-                Hello,<br />
-                <span className="italic font-normal text-neutral-400">creative</span>.
-              </h1>
-
-              <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-md mb-10">
-                Hi, New to tech? I&apos;ll help you build your first portfolio, shape your brand, and bring your digital ideas to life — step by step.
-              </p>
-
-              <div className="flex items-center gap-6">
-                <ButtonPrimary onClick={onStart}>
-                  Let&apos;s get started
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </ButtonPrimary>
-                <motion.button 
-                  onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  whileHover={{ x: 4 }}
-                  className="text-xs font-semibold text-neutral-400 hover:text-black transition-colors hidden sm:flex items-center gap-2"
-                >
-                  See my work <MoveRight className="w-3 h-3" />
-                </motion.button>
+              <div className="w-full flex justify-between px-2 shrink-0 h-20">
+                <div className="w-16 h-16 relative mt-1">
+                  <div className="absolute top-1/2 left-0 right-0 h-4 bg-[#1a1a1a] -translate-y-1/2 rounded-sm" />
+                  <div className="absolute left-1/2 top-0 bottom-0 w-4 bg-[#1a1a1a] -translate-x-1/2 rounded-sm" />
+                </div>
+                <div className="flex gap-3 items-end pb-2">
+                  <div className="w-8 h-8 bg-[#ed6a5a] rounded-full border-2 border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a]" />
+                  <div className="w-8 h-8 bg-[#ed6a5a] rounded-full border-2 border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a] mb-4" />
+                </div>
               </div>
-            </motion.div>
-
-            {/* Right — stacked project cards visual */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:flex items-center justify-center relative h-[480px]"
-            >
-              {/* Background large number */}
-              <span className="absolute -right-4 top-1/2 -translate-y-1/2 font-display text-[280px] font-bold text-neutral-200/50 leading-none select-none pointer-events-none">6</span>
-
-              {/* Card stack */}
-              <div className="relative w-full max-w-[440px] h-full">
-                {/* Back card */}
-                <motion.div
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-6 right-0 w-[280px] h-[180px] bg-white rounded-2xl border border-neutral-200 p-6 flex flex-col justify-between shadow-sm"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center">
-                      <Code className="w-4 h-4 text-neutral-400" />
-                    </div>
-                    <span className="text-[9px] font-semibold text-neutral-300 uppercase tracking-widest">Portfolio</span>
-                  </div>
-                  <div>
-                    <div className="flex gap-1.5 mb-2">
-                      <div className="h-1 w-12 bg-neutral-200 rounded-full" />
-                      <div className="h-1 w-8 bg-neutral-100 rounded-full" />
-                      <div className="h-1 w-16 bg-neutral-200 rounded-full" />
-                    </div>
-                    <div className="flex gap-1.5">
-                      <div className="h-1 w-20 bg-neutral-100 rounded-full" />
-                      <div className="h-1 w-6 bg-neutral-200 rounded-full" />
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Middle card */}
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute top-[120px] left-0 w-[300px] h-[200px] bg-black rounded-2xl p-6 flex flex-col justify-between shadow-2xl z-10"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                      <Layout className="w-4 h-4 text-neutral-400" />
-                    </div>
-                    <span className="text-[9px] font-semibold text-neutral-600 uppercase tracking-widest">Website</span>
-                  </div>
-                  <div>
-                    <div className="grid grid-cols-3 gap-2 mb-3">
-                      <div className="h-10 bg-white/5 rounded-lg" />
-                      <div className="h-10 bg-white/10 rounded-lg" />
-                      <div className="h-10 bg-white/5 rounded-lg" />
-                    </div>
-                    <div className="flex gap-1.5">
-                      <div className="h-1 w-16 bg-white/10 rounded-full" />
-                      <div className="h-1 w-10 bg-white/5 rounded-full" />
-                      <div className="h-1 w-8 bg-white/10 rounded-full" />
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Front card */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute bottom-0 right-4 w-[260px] h-[170px] bg-white rounded-2xl border border-neutral-200 p-6 flex flex-col justify-between shadow-lg z-20"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center">
-                      <Palette className="w-4 h-4 text-neutral-400" />
-                    </div>
-                    <span className="text-[9px] font-semibold text-neutral-300 uppercase tracking-widest">Graphics</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <div className="w-12 h-12 bg-neutral-100 rounded-xl" />
-                    <div className="w-12 h-12 bg-neutral-200 rounded-xl" />
-                    <div className="w-12 h-12 bg-neutral-100 rounded-xl" />
-                    <div className="w-12 h-12 bg-neutral-50 rounded-xl border border-neutral-200" />
-                  </div>
-                </motion.div>
-
-                {/* Tiny floating stat */}
-                <motion.div
-                  animate={{ y: [-4, 4, -4], x: [-2, 2, -2] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-0 left-[120px] bg-white rounded-xl border border-neutral-200 px-4 py-3 shadow-sm z-30"
-                >
-                  <p className="text-[10px] font-semibold text-neutral-400 mb-0.5">Services</p>
-                  <p className="font-display text-2xl font-bold text-black leading-none">6+</p>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
-
-        {/* Bottom scrolling marquee */}
-        <div className="border-t border-neutral-200 overflow-hidden py-5">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="flex items-center gap-8 whitespace-nowrap"
-          >
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center gap-8">
-                {["Portfolios", "Websites", "Slide decks", "Social graphics", "Digital invites", "UI Design", "Brand identity", "Creative direction"].map((item, i) => (
-                  <span key={i} className="flex items-center gap-4">
-                    <span className="text-sm font-medium text-neutral-400">{item}</span>
-                    <span className="w-1.5 h-1.5 bg-neutral-300 rounded-full shrink-0" />
-                  </span>
-                ))}
-              </div>
+        
+        {/* Scrolling tape */}
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-[#1a1a1a] border-t-2 border-white flex items-center overflow-hidden">
+          <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 15, ease: "linear", repeat: Infinity }} className="flex whitespace-nowrap items-center font-mono font-bold text-white uppercase text-xs">
+            {[...Array(6)].map((_, i) => (
+              <span key={i} className="flex items-center">
+                <span className="mx-6">Websites</span>
+                <span className="text-[#ed6a5a]">■</span>
+                <span className="mx-6">Portfolios</span>
+                <span className="text-[#9bc1bc]">■</span>
+                <span className="mx-6">UI Design</span>
+                <span className="text-[#f4f1bb]">■</span>
+              </span>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* ─── Why me ─── */}
-      <div className="px-6 lg:px-12 py-24 md:py-32 bg-black text-white">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.p variants={fadeUp} className="text-[11px] font-semibold text-neutral-500 tracking-widest uppercase mb-4">
-              Why work with me
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-16 md:mb-20 max-w-md">
-              Simple process, real results.
-            </motion.h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-800 rounded-2xl overflow-hidden">
-              {highlights.map((h, i) => (
-                <motion.div 
-                  key={i} 
-                  variants={fadeUp}
-                  className="bg-neutral-900 p-8 md:p-10 flex flex-col gap-5 group hover:bg-neutral-800 transition-colors duration-500"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                    <h.icon className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white text-sm mb-2">{h.t}</h4>
-                    <p className="text-xs text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">{h.d}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* ─── Services ─── */}
-      <div id="services-section" className="px-6 lg:px-12 py-24 md:py-32">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.p variants={fadeUp} className="text-[11px] font-semibold text-neutral-400 tracking-widest uppercase mb-4">
-              What I can do for you
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-5xl font-bold tracking-tight text-black mb-16 md:mb-20 max-w-lg">
-              Things I love making.
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-200 rounded-2xl overflow-hidden">
-              {services.map((s, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  onClick={onStart}
-                  className="bg-white p-8 md:p-10 flex flex-col justify-between group hover:bg-[#f5f5f5] transition-colors duration-500 relative cursor-pointer"
-                >
-                  {s.tag && (
-                    <span className="absolute top-6 right-6 text-[9px] font-bold uppercase tracking-widest text-neutral-400 border border-neutral-200 rounded-full px-3 py-1">
-                      {s.tag}
-                    </span>
-                  )}
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center mb-8 group-hover:bg-black group-hover:text-white transition-all duration-500">
-                      <s.icon className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
-                    </div>
-                    <h3 className="font-display text-xl font-bold text-black mb-3 tracking-tight">{s.title}</h3>
-                    <p className="text-sm text-neutral-500 leading-relaxed">{s.desc}</p>
-                  </div>
-                  <div className="mt-8 flex items-center gap-2 text-neutral-300 group-hover:text-black transition-colors duration-500">
-                    <span className="text-[10px] font-semibold uppercase tracking-widest">Get started</span>
-                    <MoveRight className="w-3 h-3" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* ─── Owner's Note ─── */}
-      <div className="px-6 lg:px-12 py-24 md:py-32 bg-black text-white">
-        <div className="max-w-[800px] mx-auto">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <motion.p variants={fadeUp} className="text-[11px] font-semibold text-neutral-500 tracking-widest uppercase mb-4">
-              Behind the scenes
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-16 md:mb-20">
-              Just me,{' '}
-              <span className="text-neutral-500">figuring it out.</span>
-            </motion.h2>
-
-            <div className="space-y-6 text-left">
-              {[
-                "Hey there - thanks for stopping by. I'm the person behind PingMe. This is a small startup, still in its early stages, and I'm learning as I go.",
-                "I'm currently using free hosting and haven't gotten a custom domain yet. But I'm working toward it, one step at a time."
-              ].map((text, i) => (
-                <motion.div 
-                  key={i}
-                  variants={fadeUp}
-                  className="p-6 md:p-8 rounded-2xl bg-neutral-900 border border-neutral-800"
-                >
-                  <p className="text-sm md:text-base text-neutral-400 leading-relaxed">{text}</p>
-                </motion.div>
-              ))}
-
-              <motion.div 
-                variants={fadeUp}
-                className="p-8 md:p-10 rounded-2xl bg-white text-black mt-8"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <Heart className="w-4 h-4 text-neutral-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Grateful</span>
-                </div>
-                <p className="text-sm md:text-base text-neutral-600 leading-relaxed">
-                  I appreciate you being here while I&apos;m still figuring things out. Your interest and encouragement keep me going — honestly.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* ─── Process ─── */}
-      <div className="px-6 lg:px-12 py-24 md:py-32">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.p variants={fadeUp} className="text-[11px] font-semibold text-neutral-400 tracking-widest uppercase mb-4">
-              How it works
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-5xl font-bold tracking-tight text-black mb-16 md:mb-20 max-w-md">
-              From idea to reality.
-            </motion.h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              {processSteps.map((step, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="relative p-8 md:p-10 rounded-2xl bg-white border border-neutral-200 group hover:border-black transition-colors duration-500"
-                >
-                  <span className="font-display text-6xl md:text-7xl font-bold text-neutral-100 group-hover:text-neutral-200 transition-colors absolute top-4 right-6 leading-none">
-                    {step.n}
-                  </span>
-                  <div className="relative z-10 pt-16">
-                    <h4 className="font-display text-xl font-bold text-black mb-3">{step.title}</h4>
-                    <p className="text-sm text-neutral-500 leading-relaxed">{step.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* ─── FAQ + Policy ─── */}
-      <div className="px-6 lg:px-12 py-24 md:py-32 bg-white">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.p variants={fadeUp} className="text-[11px] font-semibold text-neutral-400 tracking-widest uppercase mb-4">
-                Got questions?
-              </motion.p>
-              <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-black mb-10 md:mb-12">
-                Glad you asked.
-              </motion.h2>
-              <motion.div variants={fadeUp}>
-                {[
-                  { q: "How fast can we start?", a: "I usually reply within a day. Once we've agreed on the details, we can kick things off within 48 hours." },
-                  { q: "Do I need to know tech stuff?", a: "Not at all. I explain everything in plain, simple words. You just bring your ideas." },
-                  { q: "Can I request changes?", a: "Of course. Every project includes two rounds of revisions so the final result feels exactly right." },
-                  { q: "Any student-friendly pricing?", a: "Yes — I love helping students and beginners. Just mention it in your message and I'll work something out." }
-                ].map((faq, i) => (
-                  <AccordionItem key={i} title={faq.q}>
-                    {faq.a}
-                  </AccordionItem>
-                ))}
-              </motion.div>
+      {/* ─── STATS STRIP ─── */}
+      <div className="bg-[#1a1a1a] border-b-4 border-[#ed6a5a] py-6 px-6 lg:px-12">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((s, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+              className="text-center border-r-2 border-white/10 last:border-r-0">
+              <div className="font-display font-black text-3xl md:text-4xl text-[#ed6a5a]">{s.value}</div>
+              <div className="font-mono text-[10px] font-bold text-white uppercase opacity-70 mt-1">{s.label}</div>
             </motion.div>
+          ))}
+        </div>
+      </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex flex-col justify-center"
-            >
-              <div className="p-8 md:p-12 rounded-2xl bg-[#f5f5f5] border border-neutral-200">
-                <div className="flex items-center gap-2 mb-8">
-                  <ShieldCheck className="w-4 h-4 text-neutral-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">How I work</span>
+      {/* ─── SKILLS ─── */}
+      <div className="px-6 lg:px-12 py-20 bg-[#ed6a5a] border-b-4 border-[#1a1a1a]">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="mb-10">
+            <h2 className="font-display font-black text-3xl md:text-4xl text-white uppercase tracking-tighter" style={{ textShadow: '2px 2px 0px #1a1a1a' }}>
+              What I Know
+            </h2>
+            <p className="font-mono text-sm font-bold text-white opacity-90 mt-2">Here are the tools and technologies I use every day.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {skillset.map((skill, i) => (
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+                  className={`p-6 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] ${skill.bg} flex flex-col group hover:-translate-y-1 hover:shadow-[6px_6px_0px_#1a1a1a] transition-all`}>
+                <div className="w-12 h-12 bg-white border-2 border-[#1a1a1a] rounded-full flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
+                  <skill.icon className="w-6 h-6 text-[#1a1a1a]" strokeWidth={2.5} />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-black mb-8 tracking-tight">
-                  Fair and honest, always.
-                </h3>
-                <ul className="space-y-5">
-                  {[
-                    "A 50% deposit upfront to get things moving. The rest when you're happy.",
-                    "Once the project is done, everything belongs to you — fully yours.",
-                    "I'll stick around after launch to help with any questions or small fixes."
-                  ].map((rule, i) => (
-                    <li key={i} className="flex gap-3 text-sm text-neutral-500 leading-relaxed">
-                      <Check className="w-4 h-4 text-neutral-300 shrink-0 mt-0.5" />
-                      {rule}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+                <h3 className="font-display font-bold text-base uppercase text-[#1a1a1a] mb-2">{skill.title}</h3>
+                <p className="font-mono text-xs font-bold text-[#1a1a1a] opacity-80">{skill.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* ─── ABOUT ME ─── */}
+      <div className="px-6 lg:px-12 py-20 bg-white border-b-4 border-[#1a1a1a]">
+        <div className="max-w-[1100px] mx-auto">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <motion.div variants={fadeUp} className="relative">
+              <div className="w-full bg-[#9bc1bc] border-4 border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] p-4">
+                <div className="bg-[#1a1a1a] p-6 text-[#f4f1bb] font-mono leading-relaxed border-2 border-white text-xs md:text-sm">
+                  <p className="text-[#ed6a5a] mb-3 font-bold">{'>'} Loading profile data...</p>
+                  <p className="mb-2 font-bold">{'>'} Name: <span className="text-[#9bc1bc]">Hannah Jamilla DR. Peralta</span></p>
+                  <p className="mb-2 font-bold">{'>'} Role: <span className="text-[#9bc1bc]">Frontend Developer & Designer</span></p>
+                  <p className="mb-2 font-bold">{'>'} Location: <span className="text-[#9bc1bc]">Philippines 🇵🇭</span></p>
+                  <p className="mb-1 font-bold text-[#9bc1bc]">{'>'} BIO:</p>
+                  <p className="pl-4 font-bold opacity-90">
+                    "I build fun, friendly, and beautiful websites for people who have big ideas but maybe not the technical skills to bring them to life yet. That's what I'm here for!"
+                  </p>
+                  <span className="inline-block mt-4 w-2 h-4 bg-[#ed6a5a] animate-pulse" />
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeUp}>
+              <h2 className="font-display font-black text-3xl md:text-4xl text-[#1a1a1a] uppercase mb-6"
+                  style={{ textShadow: '2px 2px 0px #f4f1bb, 4px 4px 0px #9bc1bc' }}>
+                About Me
+              </h2>
+              <div className="space-y-4 text-[#1a1a1a] font-mono font-bold text-sm">
+                <p className="bg-[#f4f1bb] p-4 border-2 border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a]">
+                  I'm a student creator with a big passion for building things on the internet. I love turning ideas into real, working websites that people enjoy using.
+                </p>
+                <p className="bg-[#f4f1bb] p-4 border-2 border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a]">
+                  Whether you need a simple landing page or a full portfolio site, I'm here to help make it happen — clearly, affordably, and without all the confusing tech jargon.
+                </p>
+                <div className="flex items-center gap-3 bg-[#9bc1bc] p-4 border-2 border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a]">
+                  <Trophy className="w-6 h-6 text-[#1a1a1a] shrink-0" />
+                  <p>Thanks for supporting student developers — it means the world!</p>
+                </div>
+              </div>
+            </motion.div>
+
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ─── SERVICES ─── */}
+      <div className="px-6 lg:px-12 py-20 bg-[#f4f1bb] border-b-4 border-[#1a1a1a]">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-display font-black text-3xl md:text-4xl text-[#1a1a1a] uppercase tracking-tighter mb-3">What I Can Build For You</h2>
+            <p className="font-mono font-bold text-sm text-[#1a1a1a] opacity-80 max-w-md mx-auto">Choose what you need, or mix and match. I'm flexible!</p>
+            <div className="w-16 h-2 bg-[#ed6a5a] border border-[#1a1a1a] mx-auto mt-4" />
+          </div>
+
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <motion.div key={i} variants={fadeUp}
+                className="bg-white border-2 border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-6 group hover:-translate-y-1 hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
+                <div className="w-12 h-12 bg-[#f4f1bb] border-2 border-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#9bc1bc] transition-colors shadow-[2px_2px_0px_#1a1a1a]">
+                  <s.icon className="w-6 h-6 text-[#1a1a1a]" strokeWidth={2.5} />
+                </div>
+                <h3 className="font-display font-black text-lg uppercase text-[#1a1a1a] mb-2">{s.title}</h3>
+                <p className="font-mono text-xs font-bold text-[#1a1a1a] opacity-80">{s.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ─── FAQ ─── */}
+      <div className="px-6 lg:px-12 py-20 bg-[#9bc1bc] border-b-4 border-[#1a1a1a]">
+        <div className="max-w-[800px] mx-auto">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
+            <motion.h2 variants={fadeUp} className="inline-block font-display font-black text-2xl md:text-3xl text-white uppercase bg-[#1a1a1a] px-6 py-3 border-2 border-white shadow-[4px_4px_0px_#ed6a5a] -rotate-1">
+              Common Questions
+            </motion.h2>
+          </motion.div>
+          <motion.div variants={fadeUp} className="space-y-3">
+            {[
+              { q: "How fast can we start?",        a: "I usually reply within a day! Feel free to reach out anytime." },
+              { q: "Do I need to know tech stuff?", a: "Not at all. I explain everything in plain, simple English." },
+              { q: "Can I request changes?",         a: "Yes! Every project includes two rounds of revisions." },
+              { q: "What is your pricing like?",     a: "Very student-friendly. Just mention your budget when you message!" },
+              { q: "How do we communicate?",         a: "Through email, chat, or whatever works best for you. I'm very easy to reach!" },
+            ].map((faq, i) => (
+              <AccordionItem key={i} title={faq.q}>
+                <span className="font-mono font-bold text-sm">{`> ${faq.a}`}</span>
+              </AccordionItem>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ─── CTA BANNER ─── */}
+      <div className="px-6 lg:px-12 py-20 bg-[#ed6a5a] border-b-4 border-[#1a1a1a]">
+        <div className="max-w-[800px] mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="font-display font-black text-4xl md:text-5xl text-white uppercase mb-6 tracking-tighter"
+                style={{ textShadow: '3px 3px 0px #1a1a1a' }}>
+              Ready to Build Your Website?
+            </h2>
+            <p className="font-mono font-bold text-white text-sm md:text-base max-w-md mx-auto mb-8 bg-[#1a1a1a] p-4 border-2 border-white shadow-[4px_4px_0px_white]">
+              Let's make something great together. Click below to send me a message and we'll get started!
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <button onClick={onStart}
+                className="flex items-center justify-center gap-2 bg-white text-[#1a1a1a] border-4 border-[#1a1a1a] font-black uppercase px-8 py-4 text-sm shadow-[6px_6px_0px_#1a1a1a] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_#1a1a1a] transition-all">
+                <Mail className="w-5 h-5" /> Contact Me Now
+              </button>
+              <button onClick={onViewProjects}
+                className="flex items-center justify-center gap-2 bg-transparent text-white border-4 border-white font-black uppercase px-8 py-4 text-sm hover:bg-white hover:text-[#ed6a5a] transition-all">
+                <ArrowRight className="w-5 h-5" /> View My Projects
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ─── MEET HANNAH / COVER SECTION ─── */}
+      <div className="bg-[#f4f1bb] border-t-4 border-b-4 border-[#1a1a1a]">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-12 py-16">
+          
+          <div className="text-center mb-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <h2 className="font-display font-black text-4xl md:text-5xl text-[#1a1a1a] uppercase tracking-tighter" style={{ textShadow: '3px 3px 0px #ed6a5a' }}>
+                Meet The Creator
+              </h2>
+              <p className="font-mono font-bold text-[#1a1a1a] opacity-80 mt-2 max-w-sm mx-auto">
+                Behind every pixel is a passion for design.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ ease: "easeOut" }}
+            className="w-full bg-white border-4 border-[#1a1a1a] shadow-[12px_12px_0px_#1a1a1a]">
+            
+            {/* Uncropped Wide Photo */}
+            <div className="w-full border-b-4 border-[#1a1a1a] bg-[#9bc1bc]">
+              <img
+                src="/images/1-cover photo-Hannah-logo.webp"
+                alt="Hannah Jamilla - Frontend Developer"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Info Strip underneath */}
+            <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-8 gap-6">
+              
+              {/* Logo Box */}
+              <div className="w-48 shrink-0 bg-white border-4 border-[#ed6a5a] shadow-[4px_4px_0px_#ed6a5a] p-3">
+                <img
+                  src="/images/2-cover photo-Hannah-logo.webp"
+                  alt="HanMade Logo"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+
+              {/* Info & Contact */}
+              <div className="flex-grow text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6 w-full">
+                <div>
+                  <h3 className="font-display font-black text-2xl lg:text-3xl text-[#1a1a1a] uppercase leading-none">
+                    Hannah Jamilla DR. Peralta
+                  </h3>
+                  <p className="font-mono font-bold text-[#ed6a5a] text-sm mt-1 uppercase">Frontend Designer</p>
+                </div>
+                
+                <a href="mailto:hannahjamillap@gmail.com" 
+                   className="shrink-0 flex items-center gap-2 bg-[#1a1a1a] text-white border-2 border-[#1a1a1a] font-mono font-bold text-xs uppercase px-6 py-3 hover:bg-[#ed6a5a] shadow-[4px_4px_0px_#ed6a5a] transition-colors">
+                  <Mail className="w-4 h-4" /> Message Me
+                </a>
+              </div>
+
+            </div>
+
+          </motion.div>
+        
+        </div>
+      </div>
+
     </section>
   );
 };

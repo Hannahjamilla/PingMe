@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap');
 
 @import "tailwindcss";
 
 :root {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'IBM Plex Mono', 'Space Grotesk', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light;
-  color: #0a0a0a;
-  background-color: #f5f5f5;
+  color: #1a1a1a;
+  background-color: #f4f1bb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,43 +23,77 @@ body {
   min-width: 320px;
   min-height: 100vh;
   position: relative;
+  background-image: radial-gradient(#9bc1bc 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 @theme {
-  --color-surface: #f5f5f5;
+  /* Core Surface */
+  --color-surface: #f4f1bb;
   --color-surface-raised: #ffffff;
-  --color-surface-sunken: #ebebeb;
-  --color-ink: #0a0a0a;
-  --color-ink-muted: #525252;
-  --color-ink-faint: #a3a3a3;
-  --color-border: #e5e5e5;
-  --color-border-hover: #d4d4d4;
+  --color-surface-sunken: #e2dfac;
+
+  /* Ink */
+  --color-ink: #1a1a1a;
+  --color-ink-muted: #4a5c5a;
+  --color-ink-faint: #9bc1bc;
+
+  /* Accent */
+  --color-accent: #ed6a5a;
+  --color-accent-mid: #9bc1bc;
+  
+  /* Hard shadow */
+  --color-game-shadow: #1a1a1a;
 }
 
 @layer base {
-  body {
-    @apply bg-[#f5f5f5] text-[#0a0a0a] selection:bg-black selection:text-white;
+  ::selection {
+    background: #1a1a1a;
+    color: #f4f1bb;
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f4f1bb; border-left: 2px solid #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #ed6a5a; border: 2px solid #1a1a1a; }
+::-webkit-scrollbar-thumb:hover { background: #d65545; }
 
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-neutral-300 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-neutral-400;
-}
-
-/* Utility for Space Grotesk */
+/* ── Font Utilities ── */
 .font-display {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.font-pixel {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7em;
+}
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ── Base Game Block ── */
+.game-block {
+  background: white;
+  border: 2px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+.game-block-hover:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+}
+
+/* ── Float animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+/* ── Pulse ring ── */
+@keyframes ping-accent {
+  0% { transform: scale(1); opacity: 0.8; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.ping-accent {
+  animation: ping-accent 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }

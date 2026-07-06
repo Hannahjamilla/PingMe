@@ -1,10 +1,10 @@
 import React from 'react';
 import HeroSection from '../../components/hero-section/hero-section';
 
-const WelcomePage = ({ onStart }) => {
+const WelcomePage = ({ onStart, onViewProjects }) => {
   return (
     <main className="min-h-screen">
-      <HeroSection onStart={onStart} />
+      <HeroSection onStart={onStart} onViewProjects={onViewProjects} />
     </main>
   );
 };
